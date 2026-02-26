@@ -73,6 +73,7 @@ const Navbar = () => {
 
           {/* Products (NOT for admin) */}
           {!isAdmin && <Link to="/products">Products</Link>}
+           {/* {!isAdmin && <Link to="/contact">Contact</Link>} */}
 
           {/* Admin Panel only for admin */}
           {isAdmin && (
@@ -107,6 +108,8 @@ const Navbar = () => {
               </button>
             </div>
           )}
+          
+          
         </div>
 
         {/* MOBILE HAMBURGER ICON */}
@@ -120,76 +123,110 @@ const Navbar = () => {
       </div>
 
       {/* MOBILE MENU */}
-      {open && (
-        <div className="md:hidden bg-white shadow-lg px-4 py-5 space-y-4">
+     {open && (
+  <div className="md:hidden bg-white shadow-lg px-4 py-5 space-y-4">
 
-          {/* MOBILE SEARCH (hidden for admin) */}
-          {!isAdmin && (
-            <form
-              onSubmit={handleSearch}
-              className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2"
-            >
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="flex-1 bg-transparent outline-none"
-              />
-              <button type="submit">
-                <HiSearch size={22} className="text-gray-600" />
-              </button>
-            </form>
-          )}
+    {/* MOBILE SEARCH */}
+    {!isAdmin && (
+      <form
+        onSubmit={handleSearch}
+        className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2"
+      >
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="flex-1 bg-transparent outline-none"
+        />
+        <button type="submit">
+          <HiSearch size={22} className="text-gray-600" />
+        </button>
+      </form>
+    )}
 
-          {/* Products (NOT for admin) */}
-          {!isAdmin && (
-            <Link to="/products" onClick={() => setOpen(false)}>Products</Link>
-          )}
+    {/* Products */}
+    {!isAdmin && (
+      <Link
+        to="/products"
+        onClick={() => setOpen(false)}
+        className="block"
+      >
+        Products
+      </Link>
+    )}
 
-          {/* Admin Panel */}
-          {isAdmin && (
-            <Link
-              to="/admin"
-              onClick={() => setOpen(false)}
-              className="text-blue-600 font-semibold"
-            >
-              Admin Panel
-            </Link>
-          )}
+    {/* Contact
+    {!isAdmin && (
+      <Link
+        to="/contact"
+        onClick={() => setOpen(false)}
+        className="block"
+      >
+        Contact
+      </Link>
+    )} */}
 
-          {/* Cart (NOT for admin) */}
-          {!isAdmin && (
-            <Link to="/cart" onClick={() => setOpen(false)} className="block">
-              Cart
-              {items.length > 0 && (
-                <span className="ml-2 bg-black text-white text-xs px-2 py-1 rounded-full">
-                  {items.length}
-                </span>
-              )}
-            </Link>
-          )}
+    {/* Cart */}
+    {!isAdmin && (
+      <Link
+        to="/cart"
+        onClick={() => setOpen(false)}
+        className="block"
+      >
+        Cart
+        {items.length > 0 && (
+          <span className="ml-2 bg-black text-white text-xs px-2 py-1 rounded-full">
+            {items.length}
+          </span>
+        )}
+      </Link>
+    )}
 
-          {/* Orders (NOT for admin) */}
-          {!isAdmin && user && (
-            <Link to="/orders" onClick={() => setOpen(false)}>
-              Orders
-            </Link>
-          )}
+    {/* Orders */}
+    {!isAdmin && user && (
+      <Link
+        to="/orders"
+        onClick={() => setOpen(false)}
+        className="block"
+      >
+        Orders
+      </Link>
+    )}
 
-          {/* Login / Logout */}
-          {!user ? (
-            <Link to="/login" onClick={() => setOpen(false)}>Login</Link>
-          ) : (
-            <div className="flex flex-col gap-2">
-              <span className="font-semibold">{user.name}</span>
-              <button onClick={handleLogout} className="text-red-600 text-left font-semibold">
-                Logout
-              </button>
-            </div>
-          )}
-        </div>
-      )}
+    {/* Admin */}
+    {isAdmin && (
+      <Link
+        to="/admin"
+        onClick={() => setOpen(false)}
+        className="block text-blue-600 font-semibold"
+      >
+        Admin Panel
+      </Link>
+    )}
+
+    {/* Login / Logout */}
+    {!user ? (
+      <Link
+        to="/login"
+        onClick={() => setOpen(false)}
+        className="block"
+      >
+        Login
+      </Link>
+    ) : (
+      <div className="flex flex-col gap-2">
+        <span className="font-semibold">{user.name}</span>
+        <button
+          onClick={handleLogout}
+          className="text-red-600 text-left font-semibold"
+        >
+          Logout
+        </button>
+      </div>
+    )}
+  </div>
+)}
     </nav>
   );
 };

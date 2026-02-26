@@ -22,6 +22,7 @@ import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
 import OrdersAdmin from "./admin/OrdersAdmin";
 import Footer from "./components/layout/Footer";
+// import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
+         {/* <Route path="contact" element={<Contact />} /> */}
 
 
 
@@ -50,6 +51,7 @@ function App() {
     <Route path="products/add" element={<AddProduct />} />
     <Route path="products/edit/:id" element={<EditProduct />} />
     <Route path="orders" element={<OrdersAdmin />} />
+   
 </Route>
       </Routes>
 
