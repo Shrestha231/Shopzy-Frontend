@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5008/api",
+  baseURL: "https://shopzy-backend-shxa.onrender.com",
 });
 
 // attach JWT token
